@@ -1,5 +1,15 @@
 This file contains information about the non-affince.c code. Non-affine displacements are calculated by the formulations given by M.L Falk and J.S. Langer in "Dynamics of viscoplastic deformation in amorphous solids". 
 
+This code was used perviouly in the following publications:
+
+1) Molecular Biophysics Unit, Indian Institute of Science Bangalore, Bangalore, India
+M Tripathy, SS Iyer, A Srivastava
+Advances in Biomembranes and Lipid Self-Assembly, 87
+
+2) Fluid phase coexistence in biological membrane: Insights from local nonaffine deformation of lipids
+SS Iyer, M Tripathy, A Srivastava
+Biophysical journal 115 (1), 117-128
+
 The input parameters for the code are:
 1) The positions of the P atom sites of any one monolayer (top or bottom) for the different frames of the trajectory evolution
 2) The box dimensions (since lipid simulations are performed in NPT ensemble) for the different frames of the trajectory evolution
