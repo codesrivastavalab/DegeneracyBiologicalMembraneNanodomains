@@ -1,0 +1,24 @@
+This file contains information about how to use the lattice MC code. This code was used for the lattice runs in the work "DEGENERACY IN MOLECULAR SCALE ORGANIZATION OF BIOLOGICAL
+MEMBRANE".
+
+The interaction energies are calculated by post processing the All Atom trajectories using the gmx rerun command:
+gmx mdrun -s lipid_system.tpr -rerun traj_lipids.trr -e ener.edr
+
+The coulumbic and van del Waal energies are calulcated within a cut-off of 14 A around the referernce lipid. The index of these lipids should be provided during the gmx grompp command. The following needs to be added to the .mdp file to calculate interactions between the reference atoms and its neighbours (labelled as nbr in the index file):
+
+energygrps              = P1 nbr1
+energygrp-excl          = P1 P1 nbr1 nbr1
+
+(here P1 is the first P atom. When the calculation is done for other P atom, changes have to made accordingly)
+
+When the interactions energies are calculated, they are converted into a tabular form for the lattice_mc.py code. This table has the following format:
+Column 1 - kai^2_i 
+Column 2 - kai^2_j
+Column 3 - kai^2_i and kai2_j written as a unique combination so as to correspond to the H_{ij} of the combination pair
+Column 4 - interaction Hamiltonian
+
+This format needs to be maintained as the lattice_mc.py code reads the columns in the format specified. 
+
+Ones these inputs are ready, the lattice_mc.py code can be run to perform a lattice monte carlo run where the energy of the system is minimized to attain the final lattice configuration. The code outputs acceptance criteria, energy of the lattice configuration for each step and the final lattice configuration.
+
+At each temperature specified in the input parameter (beta), the iterations are to be run until convergence is acheived. Ones the energies are converged at higher temperatures, the temperature is decreased and the same procedure is continued. This is followed until energies are converged at lower temperatures. The simulations are said to be converged when the energies attained for configurations corresponding to different initial randomly arranged kai^2 values are similar. 

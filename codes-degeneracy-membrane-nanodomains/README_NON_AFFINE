@@ -1,0 +1,7 @@
+This file contains information about the non-affince.c code. Non-affine displacements are calculated by the formulations given by M.L Falk and J.S. Langer in "Dynamics of viscoplastic deformation in amorphous solids". 
+
+The input parameters for the code are:
+1) The positions of the P atom sites of any one monolayer (top or bottom) for the different frames of the trajectory evolution
+2) The box dimensions (since lipid simulations are performed in NPT ensemble) for the different frames of the trajectory evolution
+
+The output from the code contains position P_xi, P_yi and kai^2_i for all the particles at each frame.
